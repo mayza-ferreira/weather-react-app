@@ -1,5 +1,5 @@
 import react from "react";
 
 export default function Weather() {
-  return;
+  return <div>Weather</div>;
 }
