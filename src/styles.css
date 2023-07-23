@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #d8ada0;
+  --secondary-color: #ffffff;
+  --third-color: #212529;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.App .card {
+  display: block;
+  top: 80px;
+  margin: 0 auto;
+  padding: 70px;
+  width: 1270px;
+  border-radius: 3200px;
+  border-width: 13px;
+  border-color: var(--primary-color);
+  font-family: "Tilt Neon", cursive;
+}

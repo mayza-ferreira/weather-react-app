@@ -1,0 +1,14 @@
+.btn {
+  background: var(--primary-color);
+  opacity: 0.6;
+  border-radius: 20px;
+}
+.location-icon {
+  color: var(--secondary-color);
+}
+
+.search {
+  left: 65px;
+  margin: 30px;
+}
+  

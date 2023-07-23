@@ -1,0 +1,14 @@
+#icon-forecast {
+  margin-right: 5px;
+  font-size: 40px;
+}
+.day {
+  font-size: 25px;
+  margin-left: 10px;
+}
+.forecastTemp {
+  font-size: 15px;
+}
+.forecastDay {
+  justify-content: center;
+}
