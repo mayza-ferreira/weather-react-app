@@ -1,0 +1,7 @@
+@import "constants.css";
+.git-url {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-family: sans-serif;
+}
+

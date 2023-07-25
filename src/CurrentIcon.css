@@ -1,4 +1,5 @@
+@import "constants.css";
 .icon-today {
   font-size: 60px;
-  color: #d8ada0;
+  color: var(--primary-color);
 }

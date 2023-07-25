@@ -1,3 +1,4 @@
+@import "constants.css";
 .btn {
   background: var(--primary-color);
   opacity: 0.6;
@@ -11,4 +12,3 @@
   left: 65px;
   margin: 30px;
 }
-  

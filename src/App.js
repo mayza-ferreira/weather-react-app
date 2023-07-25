@@ -3,11 +3,13 @@ import Forecast from "./Forecast";
 
 import Search from "./Search";
 import Today from "./Today";
+import Footer from "./Footer";
+
 export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="card">
+        <div className="card ">
           <div className="card-body">
             <div className="row">
               <div className="col-sm-4">
@@ -27,6 +29,9 @@ export default function App() {
           </div>
         </div>
       </div>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

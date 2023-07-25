@@ -1,15 +1,15 @@
-:root {
-  --primary-color: #d8ada0;
-  --secondary-color: #ffffff;
-  --third-color: #212529;
-}
+@import "constants.css";
 
+.container {
+  min-height: 90vh !important;
+}
 .App {
   font-family: sans-serif;
   text-align: center;
+  min-height: 100vh;
 }
 
-.App .card {
+.card {
   display: block;
   top: 80px;
   margin: 0 auto;
@@ -19,4 +19,7 @@
   border-width: 13px;
   border-color: var(--primary-color);
   font-family: "Tilt Neon", cursive;
+}
+footer {
+  padding: 10px;
 }
