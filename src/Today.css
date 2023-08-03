@@ -1,3 +1,21 @@
 .today {
   text-align: center;
 }
+.city {
+  font-size: 38px;
+}
+.current-day {
+  font-size: 15px;
+  align-content: center;
+}
+
+.temp-today {
+  font-size: 27px;
+}
+.icon-desc,
+.weather-description {
+  font-size: 17px;
+}
+.weather-description {
+  list-style-type: none;
+}

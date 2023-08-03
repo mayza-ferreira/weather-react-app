@@ -2,7 +2,7 @@ import "./styles.css";
 import Forecast from "./Forecast";
 
 import Search from "./Search";
-import Today from "./Today";
+
 import Footer from "./Footer";
 
 export default function App() {
@@ -19,10 +19,7 @@ export default function App() {
               </div>
               <div className="col-sm-8">
                 <div className="row">
-                  <Search />
-                </div>
-                <div className="row">
-                  <Today />
+                  <Search defaultCity="Montevideo" />
                 </div>
               </div>
             </div>
