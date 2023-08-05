@@ -4,11 +4,13 @@ import "./Search.css";
 import Today from "./Today";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     console.log(response.data);
 
     setWeatherData({
       ready: true,
+      date: new Date(response.data.dt * 1000),
       coordinates: response.data.coord,
       temperature: Math.round(response.data.main.temp),
       humidity: response.data.main.humidity,
@@ -18,31 +20,44 @@ export default function Weather(props) {
       city: response.data.name,
     });
   }
+  function search() {
+    let apiKey = "842b36d55cb28eba74a018029d56b04c";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(handleResponse);
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
 
   if (weatherData.ready) {
     return (
       <div>
-        <div className="input-group search w-50 mx-auto">
-          <div className="form-outline">
-            <input
-              type="search"
-              id="form1"
-              placeholder="Enter a city"
-              className="form-control rounded-end-0 rounded-start-5"
-            />
+        <form onSubmit={handleSubmit}>
+          <div className="input-group search w-50 mx-auto">
+            <div className="form-outline">
+              <input
+                type="search"
+                id="form1"
+                placeholder="Enter a city"
+                className="form-control rounded-end-0 rounded-start-5"
+                onChange={handleCityChange}
+              />
+            </div>
+            <button type="submit" className="btn" id="btn-search">
+              <i className="fa-solid fa-magnifying-glass-location location-icon"></i>
+            </button>
           </div>
-          <button type="button" className="btn" id="btn-search">
-            <i className="fa-solid fa-magnifying-glass-location location-icon"></i>
-          </button>
-        </div>
+        </form>
         <Today data={weatherData} />
       </div>
     );
   } else {
-    let apiKey = "842b36d55cb28eba74a018029d56b04c";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-
-    axios.get(apiUrl).then(handleResponse);
+    search();
     return <div className="m-4"> Loading...</div>;
   }
 }

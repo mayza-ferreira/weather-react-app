@@ -19,3 +19,10 @@
 .weather-description {
   list-style-type: none;
 }
+.btn-geo {
+  color: var(--secondary-color);
+  border-color: transparent;
+  border-radius: 20px;
+  background: var(--primary-color);
+  opacity: 0.6;
+}
