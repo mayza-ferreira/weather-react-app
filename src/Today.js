@@ -5,7 +5,6 @@ import WeatherIcon from "./WeatherIcon";
 import Geolocation from "./Geolocation";
 import UnitConversion from "./UnitConversion";
 export default function Today(props) {
-  console.log(props.data);
   return (
     <div className="today">
       <div className="row">
