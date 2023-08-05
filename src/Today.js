@@ -37,7 +37,7 @@ export default function Today(props) {
 
       <UnitConversion celsius={props.data.temperature} />
 
-      <div class="geolocation">
+      <div className="geolocation">
         <Geolocation />
       </div>
     </div>
