@@ -2,8 +2,8 @@ import React from "react";
 import FormattedDate from "./FormattedDate";
 import "./Today.css";
 import WeatherIcon from "./WeatherIcon";
-import Geolocation from "./Geolocation";
-import UnitConversion from "./UnitConversion";
+
+import CurrentTemp from "./CurrentTemp";
 export default function Today(props) {
   return (
     <div className="today">
@@ -16,7 +16,7 @@ export default function Today(props) {
         {props.data.city}
       </div>
       <div className="ms-5 mb-3 float-left">
-        <WeatherIcon icon={props.data.icon} />
+        <WeatherIcon icon={props.data.icon} color="#D8ADA0" size={100} />
       </div>
 
       <div className="icon-desc text-capitalize mb-3 ms-5">
@@ -35,11 +35,7 @@ export default function Today(props) {
         </ul>
       </div>
 
-      <UnitConversion celsius={props.data.temperature} />
-
-      <div className="geolocation">
-        <Geolocation />
-      </div>
+      <CurrentTemp celsius={props.data.temperature} />
     </div>
   );
 }

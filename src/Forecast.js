@@ -1,39 +1,45 @@
-import React from "react";
-import ForecastDay from "./ForecastDay";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Forecast.css";
-export default function Forecast() {
-  return (
-    <div className="row forecast m-5">
-      <ForecastDay
-        icon="fa-solid fa-cloud"
-        day="Monday"
-        minTemp={15}
-        maxTemp={25}
-      />
-      <ForecastDay
-        icon="fa-solid fa-sun"
-        day="Tuesday"
-        minTemp={7}
-        maxTemp={18}
-      />
-      <ForecastDay
-        icon="fa-solid fa-sun"
-        day="Wednesday"
-        minTemp={10}
-        maxTemp={12}
-      />
-      <ForecastDay
-        icon="fa-solid fa-cloud-showers-heavy"
-        day="Thursday"
-        minTemp={14}
-        maxTemp={20}
-      />
-      <ForecastDay
-        icon="fa-solid fa-bolt"
-        day="Friday"
-        minTemp={15}
-        maxTemp={20}
-      />
-    </div>
-  );
+import ForecastDay from "./ForecastDay";
+
+export default function Forecast(props) {
+  let [loaded, setLoaded] = useState(false);
+  let [forecast, setForecast] = useState(null);
+
+  function handleResponse(response) {
+    console.log(response.data);
+    setForecast(response.data.daily);
+    setLoaded(true);
+  }
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
+
+  if (loaded) {
+    return (
+      <div>
+        {forecast.map(function (dailyForecast, index) {
+          if (index < 5) {
+            return (
+              <div key={index}>
+                {" "}
+                <ForecastDay data={dailyForecast} />
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
+      </div>
+    );
+  } else {
+    let longitude = props.coordinates.lon;
+    let latitude = props.coordinates.lat;
+    let apiKey = "842b36d55cb28eba74a018029d56b04c";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+    return null;
+  }
 }

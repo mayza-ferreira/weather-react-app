@@ -1,5 +1,4 @@
 import "./styles.css";
-import Forecast from "./Forecast";
 
 import Search from "./Search";
 
@@ -11,21 +10,11 @@ export default function App() {
       <div className="container">
         <div className="card ">
           <div className="card-body">
-            <div className="row">
-              <div className="col-sm-4">
-                <div id="forecast">
-                  <Forecast />
-                </div>
-              </div>
-              <div className="col-sm-8">
-                <div className="row">
-                  <Search defaultCity="Montevideo" />
-                </div>
-              </div>
-            </div>
+            <Search defaultCity="Montevideo" />
           </div>
         </div>
       </div>
+
       <footer>
         <Footer />
       </footer>

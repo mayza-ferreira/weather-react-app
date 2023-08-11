@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Search.css";
 import Today from "./Today";
+import Forecast from "./Forecast";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     setWeatherData({
+      coord: response.data.coord,
       ready: true,
       date: new Date(response.data.dt * 1000),
       coordinates: response.data.coord,
@@ -34,24 +36,35 @@ export default function Weather(props) {
 
   if (weatherData.ready) {
     return (
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div className="input-group search w-50 mx-auto">
-            <div className="form-outline">
-              <input
-                type="search"
-                id="form1"
-                placeholder="Enter a city"
-                className="form-control rounded-end-0 rounded-start-5"
-                onChange={handleCityChange}
-              />
-            </div>
-            <button type="submit" className="btn" id="btn-search">
-              <i className="fa-solid fa-magnifying-glass-location location-icon"></i>
-            </button>
+      <div className="row">
+        <div className="col-sm-4">
+          <div id="forecast">
+            <Forecast coordinates={weatherData.coordinates} />
           </div>
-        </form>
-        <Today data={weatherData} />
+        </div>
+        <div className="col-sm-8">
+          <div className="row">
+            <div>
+              <form onSubmit={handleSubmit}>
+                <div className="input-group search w-50 mx-auto">
+                  <div className="form-outline">
+                    <input
+                      type="search"
+                      id="form1"
+                      placeholder="Enter a city"
+                      className="form-control rounded-end-0 rounded-start-5"
+                      onChange={handleCityChange}
+                    />
+                  </div>
+                  <button type="submit" className="btn" id="btn-search">
+                    <i className="fa-solid fa-magnifying-glass-location location-icon"></i>
+                  </button>
+                </div>
+              </form>
+              <Today data={weatherData} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   } else {
